@@ -1,23 +1,56 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class Article extends Component {
 
-    state = {
-        isOpen: false,
-        opened: {
-            a: true
-        }
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isOpen: false,
+            isCommentsVisible: false
+        };
     }
 
-    render() {
-        const { article } = this.props
-        const { isOpen } = this.state
 
-        const body = isOpen ? <section>{article.text}</section> : null
+    render() {
+        const
+            { article } = this.props,
+
+            { isOpen, isCommentsVisible } = this.state,
+
+            commentsTextStyle = {
+                color: 'blue',
+                textDecoration: 'underline',
+                cursor: 'pointer'
+            },
+
+            comments = isCommentsVisible ?
+                <div>
+                    {
+                        article.comments ?
+                        article.comments.map(comment =>
+                            <section key={comment.id}>
+                                <header><h4>{comment.user}</h4></header>
+                                <div>{comment.text}</div>
+                            </section>) : null
+                    }
+                </div> : null,
+
+            body = isOpen ?
+                <section>
+                    {article.text}
+                    <h3 onClick = {this.toggleComments.bind(this)}>
+                        {
+                            isCommentsVisible ? <p style={commentsTextStyle}>Close comments</p>
+                                : <p style={commentsTextStyle}>Show comments</p>
+                        }
+                    </h3>
+                    {comments}
+                </section> : null;
 
         return (
             <div>
-                <h3 onClick = {this.toggleOpen}>{article.title}</h3>
+                <h2 onClick = {this.toggleOpen.bind(this)}>{article.title}</h2>
                 {body}
             </div>
         )
@@ -26,26 +59,12 @@ export default class Article extends Component {
     toggleOpen = ev => {
         this.setState({
             isOpen: !this.state.isOpen
-        })
-/*
+        });
+    }
 
+    toggleComments = ev => {
         this.setState({
-            opened: {...this.state.opened, a: false}
-        })
-*/
+            isCommentsVisible: !this.state.isCommentsVisible
+        });
     }
 }
-
-
-
-/*
-export default (props) => {
-    const { article } = props
-
-    return (
-        <div>
-            <h3>{article.title}</h3>
-            <section>{article.text}</section>
-        </div>
-    )
-}*/
