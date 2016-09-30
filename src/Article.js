@@ -7,6 +7,7 @@ export default class Article extends Component {
 
         this.state = {
             isOpen: false,
+            //стоит завести отдельный компонент CommentList и вынести туда это состояние и половину логики
             isCommentsVisible: false
         };
     }
@@ -23,7 +24,7 @@ export default class Article extends Component {
                 textDecoration: 'underline',
                 cursor: 'pointer'
             },
-
+            //лучше не писать столько кода в JSX - вынеси значение в переменную
             comments = isCommentsVisible ?
                 <div>
                     {
