@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 function Comment(props) {
-    const { text, user } = props.comment
+    const { text, user } = props.comment;
     return (
         <p>
             {text} <strong>by {user}</strong>
@@ -14,6 +14,6 @@ Comment.propTypes = {
         text: PropTypes.string.isRequired,
         user: PropTypes.string
     }).isRequired
-}
+};
 
 export default Comment

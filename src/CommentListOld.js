@@ -10,13 +10,13 @@ const CommentListOld = React.createClass({
 
 
     render() {
-        const { comments } = this.props
-        const { isOpen } = this.state
-        if (!comments || !comments.length) return <p>No comments yet</p>
+        const { comments } = this.props;
+        const { isOpen } = this.state;
+        if (!comments || !comments.length) return <p>No comments yet</p>;
 
-        const commentItems = comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>)
-        const text = isOpen ? 'hide comments' : `show ${comments.length} comments`
-        const body = isOpen && <ul>{commentItems}</ul>
+        const commentItems = comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>);
+        const text = isOpen ? 'hide comments' : `show ${comments.length} comments`;
+        const body = isOpen && <ul>{commentItems}</ul>;
 
         return (
             <div>
