@@ -3,6 +3,7 @@ import React from 'react'
 export default  function accordeonDecorator (Component) {
     return class WrapperComponent extends React.Component {
         state = {
+            //Не привязывайся к названию сущности, декоратор будет использоваться везде. Назови, скажем, openItemId
             openArticleId: null
         };
 
@@ -12,6 +13,7 @@ export default  function accordeonDecorator (Component) {
 
 
         toggleOpenArticle = id => ev => {
+            //лучше один setState а там openArticleId: id === this.state.openArticleId ? null : id
             id === this.state.openArticleId ?
                 this.setState({
                     openArticleId: null
