@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-
+//все хорошо, но тут еще поле user должно быть
 export default class NewArticleForm extends Component {
     state = {
         comment: ''
