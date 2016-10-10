@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import Comment from './Comment'
 import NewCommentForm from './NewCommentForm'
 import toggleOpen from './../decorators/toggleOpen'
-import NewCommentForm from './NewCommentForm'
 
 function CommentList(props) {
     const { comments, isOpen, toggleOpen } = props

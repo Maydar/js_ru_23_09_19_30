@@ -4,14 +4,18 @@ import 'react-select/dist/react-select.css'
 
 class SelectFilter extends Component {
     static propTypes = {
-        articles: PropTypes.array.isRequired
+        articles: PropTypes.array.isRequired,
+        filterArticlesAction: PropTypes.func.isRequired,
     };
 
     state = {
         selected: null
     }
 
-    handleChange = selected => this.setState({ selected })
+    handleChange = selected => {
+        this.props.filterArticlesAction(selected);
+        this.setState({ selected })
+    }
 
     render() {
         const { articles } = this.props

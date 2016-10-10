@@ -7,4 +7,4 @@ import store from './store'
 render(<Provider store = {store}>
         <Container />
     </Provider>
-, document.getElementById('container'))
+, document.getElementById('container'));
