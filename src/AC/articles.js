@@ -8,11 +8,11 @@ export function deleteArticle(id) {
 }
 
 
-export function filterArticles(articles) {
+export function filterArticles(filters) {
     return {
         type: FILTER_ARTICLES,
         payload: {
-            filters: articles
+            filters: filters
         }
     }
 
