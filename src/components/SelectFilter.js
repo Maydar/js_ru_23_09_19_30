@@ -7,7 +7,7 @@ class SelectFilter extends Component {
         articles: PropTypes.array.isRequired,
         filterArticlesAction: PropTypes.func.isRequired,
     };
-
+    //тебе уже не нужен стейт, 2 источника правды всегда плохо. бери это из стора
     state = {
         selected: null
     }
