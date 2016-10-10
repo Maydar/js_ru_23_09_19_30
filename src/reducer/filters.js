@@ -3,6 +3,8 @@ const _ = require('lodash');
 
 export default (filters = [], action) => {
     const { type, payload } = action;
+
+    //не нашел стандартного способа мержить массивы с фильтрами
     switch (type) {
         case FILTER_ARTICLES:
             return _.union(...filters, payload.filters);

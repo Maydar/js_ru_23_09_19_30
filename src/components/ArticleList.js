@@ -26,6 +26,8 @@ class ArticleList extends Component {
                     </li>
                 )) :
                 articles.map(article => {
+
+                    //фильтрация статей по ID
                     let result = _.some(filterIds, (item) => article.id === item);
 
                     return result ?
