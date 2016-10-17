@@ -1,14 +1,24 @@
-import { FILTER_ARTICLES } from '../constants';
-const _ = require('lodash');
+import { CHANGE_DATE_RANGE, CHANGE_SELECTION } from '../constants'
+import { Map } from 'immutable'
 
-export default (filters = [], action) => {
-    const { type, payload } = action;
-
-    //не нашел стандартного способа мержить массивы с фильтрами
-    //стандартного и нет, только поверхностный
-    switch (type) {
-        case FILTER_ARTICLES:
-            return _.union(...filters, payload.filters);
+const defaultFilters = new Map({
+    selected: [],
+    dateRange: {
+        from: null,
+        to: null
     }
-    return filters;
+})
+
+export default (filters = defaultFilters, action) => {
+    const { type, payload } = action
+
+    switch (type) {
+        case CHANGE_DATE_RANGE:
+            return filters.set('dateRange', payload.dateRange)
+
+        case CHANGE_SELECTION:
+            return filters.set('selected', payload.selected)
+    }
+
+    return filters
 }

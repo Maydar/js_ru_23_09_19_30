@@ -1,10 +1,12 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import reducer from '../reducer'
-import articles from '../fixtures'
+import logger from '../middlewares/logger'
 
-const store = createStore(reducer, {
-    articles: articles
-});
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const enhancer = composeEnhancers(applyMiddleware(logger))
+
+const store = createStore(reducer, {}, enhancer)
+
 window.store = store
-export default store;
+export default store
 
